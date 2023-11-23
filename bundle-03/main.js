@@ -25,7 +25,7 @@ const cars = [
     {
         manufacturer: 'Volkswagen',
         model: 'Golf',
-        type: 'benzina' // Maiuscola
+        type: 'Benzina'
     },
     {
         manufacturer: 'Fiat',
@@ -50,30 +50,28 @@ const cars = [
     {
         manufacturer: 'Ford',
         model: 'Kuga',
-        type: 'diesel' // Maiuscola
+        type: 'Diesel'
     },
     {
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }, // virogola
+    }, // virogola mancante
     {
         manufacturer: 'Audi',
         model: 'R8',
-        type: 'benzina'  // Maiuscola
+        type: 'Benzina'
     },
 ];
 
-const gasolineCars = cars.filter((auto) => {
-    return auto.type === 'benzina'; // return mancante
-}); // freccia e graffe
+const gasolineCars = cars.filter((auto) => auto.type.toLocaleLowerCase() === 'benzina'); // freccia 
 
 const dieselCars = cars.filter((auto) => {
-    return auto.type === 'diesel'; // return mancante
+    return auto.type.toLocaleLowerCase() === 'diesel'; // return mancante
 });
 
 const otherCars = cars.filter((auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+    return auto.type.toLocaleLowerCase() !== 'benzina' && auto.type.toLocaleLowerCase() !== 'diesel'; // operatore and (&&) al posto di or (||)
 });
 
 console.log('Auto a benzina');
@@ -86,3 +84,9 @@ console.log(dieselCars);
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+/*
+Questo codice è un array di oggetti (auto), ognuno con chiavi manufacturer, model e type.
+Con il metodo filter vengono creati altri tre array, per auto diesel, benzina o altro. 
+Errori: manca una virgola nell'array tra un oggetto e l'altro ariga 59, a riga 67 la freccia della arrow function è scritta male, manca la proprietà .toLowerCase ad auto.type visto che alcune chiavi hanno lettere maiuscole e altre no , a riga 70 manca il return e a riga 74 l'operatore da usare è && e non ||. 
+*/

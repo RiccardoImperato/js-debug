@@ -40,8 +40,7 @@ function checkAge() {
     }
     return message;
 }
-const eta = checkAge();
-console.log(eta);
+console.log(checkAge());
 
 // ESERCIZIO 2
 // function printColorsNumber() {
@@ -52,14 +51,12 @@ console.log(eta);
 
 /*
 Funzione che stampa in console un messaggio con il numero di elementi presenti all'interno di un array.
-Scritto in questo modo il messaggio in console sarà: 'Nella mai palette ci sono undefined colori!', 
-salvando invece in una variabile il valore della lunghezza dell'array, possiamo richiamarla nel template litteral  
+Scritto in questo modo il messaggio in console sarà: 'Nella mai palette ci sono undefined colori!', .length è scritto male 
 */
 // Soluzione
 function printColorsNumber() {
     const colors = ['blue', 'red', 'yellow', 'green', 'black'];
-    let colori = colors.length;
-    console.log(`Nella mia palette ci sono ${colori} colori!`);
+    console.log(`Nella mia palette ci sono ${colors.length} colori!`);
 }
 
 printColorsNumber();
@@ -129,6 +126,7 @@ function checkAccess() {
 checkAccess();
 
 // ESERCIZIO 5 (suggerimento: c'è un solo errore)
+/*
 function checkAccessImproved() {
     const addresses = ['mymail@mail.com', 'yourmail@mail.com', 'hermail@mail.com', 'hismail@mail.com'];
 
@@ -153,6 +151,39 @@ function checkAccessImproved() {
         } else {
             console.log('Accesso negato!');
         }
+    }
+    checkAccessImproved();
+*/
+
+/*
+Funzione che verifica se all'interno di un array di email sia presente quella inserita dall'utente, in caso positivo stampa in console 'Accesso consentito' altrimenti 'Accesso negato'.
+Errori nella dichiarazione dei valori booleani tra apici, le condizioni vanno definite fuori dal ciclo for per evitare che vengano ripetute per tutti gli elementi dell array,
+e parentesi graffa per chiudere la funzione mancante.
+*/
+
+function checkAccessImproved() {
+    const addresses = ['mymail@mail.com', 'yourmail@mail.com', 'hermail@mail.com', 'hismail@mail.com'];
+
+    const userEmail = prompt('Inserisci il tuo indirizzo email');
+
+    let grantAccess = false; // booleani senza apici 
+
+    for (let i = 0; i < addresses.length; i++) {
+        const email = addresses[i];
+
+        if (userEmail.length > 5) {
+
+            if (email === userEmail) {
+                grantAccess = true; // booleani senza apici 
+
+            }
+
+        }
+    } // Condizioni fuori dal ciclo
+    if (grantAccess) {
+        console.log('Accesso consentito!');
+    } else {
+        console.log('Accesso negato!');
     }
 }; // Parentesi graffa per chiudere la funzione
 checkAccessImproved();
